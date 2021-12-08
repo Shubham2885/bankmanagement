@@ -2,16 +2,30 @@ package main;
 
 import java.util.Scanner;
 
-class Node {
+class Node <T> {
 	
-	 String data;
+	 T data;
 	 Node addressOfNextNode;
 	
-	public Node(String data) {
+	public Node(T data) {
 		this.data = data;
 		this.addressOfNextNode = null;
 	}
 	
+}
+
+class Demo{
+	String name;
+
+	public Demo(String name) {
+		super();
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Demo [name=" + name + "]";
+	}
 }
 public class LinkedLlistDemo {
 
@@ -26,7 +40,7 @@ public class LinkedLlistDemo {
 		}
 	}
 	
-	public void addNode(String data) {
+	public <T> void addNode(T data) { 
 		Node temp = head;
 		
 		Node newNode = new Node(data);
@@ -40,7 +54,7 @@ public class LinkedLlistDemo {
 			temp.addressOfNextNode = newNode;
 		}
 		
-		printLinkedList();
+//		printLinkedList();
 	}
 	
 	public void search(String key) {
@@ -67,22 +81,30 @@ public class LinkedLlistDemo {
 //		
 //		node2.addressOfNextNode = node3;
 		
+//		LinkedLlistDemo demo = new LinkedLlistDemo();
+//		Scanner scanner = new Scanner(System.in);
+//		int x = 1;
+//		do {
+//			System.out.println("Enter the value");
+//			String val = scanner.next();
+//			demo.addNode(val);
+//			System.out.println();
+//			System.out.println("Do want to add more data -> press 1");
+//			x = scanner.nextInt();
+//		}while(x == 1);
+//		
+//		System.out.println("Enter the value to search ");
+//		String key = scanner.next();
+//		
+//		demo.search(key);
 		LinkedLlistDemo demo = new LinkedLlistDemo();
-		Scanner scanner = new Scanner(System.in);
-		int x = 1;
-		do {
-			System.out.println("Enter the value");
-			String val = scanner.next();
-			demo.addNode(val);
-			System.out.println();
-			System.out.println("Do want to add more data -> press 1");
-			x = scanner.nextInt();
-		}while(x == 1);
-		
-		System.out.println("Enter the value to search ");
-		String key = scanner.next();
-		
-		demo.search(key);
+		demo.addNode(2);
+		demo.addNode("Shubham");
+		demo.addNode(23.7);
+		demo.addNode(34f);
+		Demo demo2 = new Demo("Hello");
+		demo.addNode(demo2);
+		demo.printLinkedList();
 	}
 	
 	//isEmpty
